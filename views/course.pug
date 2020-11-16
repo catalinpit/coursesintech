@@ -1,0 +1,17 @@
+extends layout/base.pug
+
+block content
+  .shadow-lg.mx-6.my-40.max-w-lg.h-auto(class='md:flex md:mx-auto md:max-w-2xl')
+    img.h-auto.w-full.object-cover.rounded-lg.rounded-r-none(class='md:w-1/3 pb-5/6' src='https://ik.imagekit.io/q5edmtudmz/FB_IMG_15658659197157667_wOd8n5yFyXI.jpg' alt='bag')
+    .w-full.px-4.py-4.bg-white.rounded-lg(class='md:w-2/3')
+        .flex.items-center
+            h2.text-xl.text-gray-800.font-medium.mr-16
+                = course.name
+            p.text-gray-800.font-semibold.tracking-tighter
+                |             48$
+        p.text-sm.text-gray-700.mt-4
+        | Lorem, ipsum dolor sit amet consectetur Amet veritatis ipsam reiciendis numquam tempore commodi ipsa suscipit laboriosam, sit earum at sequ adipisicing elit. Amet veritatis ipsam reiciendis numquam tempore commodi ipsa suscipit laboriosam, sit earum at sequi.
+        .flex.items-center.justify-end.mt-4.top-auto
+            button.bg-white.text-red-500.px-4.py-2.rounded.mr-auto(class='hover:underline') Delete
+            button.bg-gray-200.text-blue-600.px-2.py-2.rounded-md.mr-2 Edit
+            button.bg-blue-600.text-gray-200.px-2.py-2.rounded-md Publish

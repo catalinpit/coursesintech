@@ -36,17 +36,17 @@ router.post('/courses', auth, async (req, res) => {
     }
 });
 
-router.get('/courses/:id', auth, async (req, res) => {
+router.get('/courses/:id', async (req, res) => {
     const _id = req.params.id;
 
     try {
-        const course = await Course.findOne({ _id, owner: req.user })
+        const course = await Course.findOne({ _id })
 
         if (!course) {
             return res.send(404).send();
         }
 
-        res.send(course);
+        res.render('course', { course });
     } catch(e) {
         res.status(500).send(e);
     }
