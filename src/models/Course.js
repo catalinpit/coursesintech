@@ -29,12 +29,20 @@ const CourseSchema = new mongoose.Schema({
     },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: 'User'
-    }
+    },
 }, {
     timestamps: true
 });
+
+CourseSchema.virtual('courseComments', {
+    ref: 'Comment',
+    localField: '_id',
+    foreignField: 'course'
+});
+
+CourseSchema.set('toObject', { virtuals: true });
+CourseSchema.set('toJSON', { virtuals: true });
 
 const Course = mongoose.model('Course', CourseSchema);
 

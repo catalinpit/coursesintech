@@ -1,4 +1,5 @@
 const Course = require('../models/Course')
+const Comment = require('../models/Comment');
 
 const getCourses = async (req, res) => {
     let order;
@@ -8,15 +9,17 @@ const getCourses = async (req, res) => {
     }
 
     try {
-        const courses = await Course.find({ }).sort({
-            createdAt: order
-        });
+        const courses = await Course.find()
+            .populate({ path: 'courseComments', model: 'Comment' })
+            .sort({
+                createdAt: order
+            });
 
         res.json({
-                courses: courses
-
+            courses: courses
         });
     } catch(e) {
+        console.log(e)
         res.status(500).send(e);
     }
 };

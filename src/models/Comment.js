@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const CommentSchema = new Schema({
+const CommentSchema = new mongoose.Schema({
     text: {
         type: String,
         required: true,
@@ -12,6 +12,11 @@ const CommentSchema = new Schema({
             ref: 'User'
         },
         username: String
+    },
+    course: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course',
+        required: true
     }
 }, {
     timestamps: true
