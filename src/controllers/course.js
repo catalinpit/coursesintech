@@ -1,9 +1,6 @@
-const express = require('express');
-const auth = require('.././middleware/auth');
 const Course = require('../models/Course')
-const router = new express.Router();
 
-router.get('/', async (req, res) => {
+const getCourses = async (req, res) => {
     let order;
 
     if (req.query.sortBy) {
@@ -15,13 +12,16 @@ router.get('/', async (req, res) => {
             createdAt: order
         });
 
-        res.render('index', { courses });
-    } catch(e) {
-        res.status(500).send();
-    }
-});
+        res.json({
+                courses: courses
 
-router.post('/courses', auth, async (req, res) => {
+        });
+    } catch(e) {
+        res.status(500).send(e);
+    }
+};
+
+const addCourse = async (req, res) => {
     const course = new Course({
         ...req.body,
         owner: req.user._id
@@ -30,13 +30,13 @@ router.post('/courses', auth, async (req, res) => {
     try {
         await course.save();
 
-        res.status(201).send(course);
+        res.status(201).json({ course });
     } catch(e) {
         res.status(400).send(e);
     }
-});
+};
 
-router.get('/courses/:id', async (req, res) => {
+const getCourse = async (req, res) => {
     const _id = req.params.id;
 
     try {
@@ -46,13 +46,15 @@ router.get('/courses/:id', async (req, res) => {
             return res.send(404).send();
         }
 
-        res.render('course', { course });
+        res.json({ 
+            course
+        });
     } catch(e) {
         res.status(500).send(e);
     }
-});
+};
 
-router.patch('/courses/:id', auth, async (req, res) => {
+const updateCourse = async (req, res) => {
     const updates = Object.keys(req.body);
     const allowedUpdates = ['name', 'description', 'author']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
@@ -71,13 +73,13 @@ router.patch('/courses/:id', auth, async (req, res) => {
             return res.status(404).send();
         }
 
-        res.send(course);
+        res.json({ course });
     } catch(e) {
         res.status(500).send(e);
     }
-});
+};
 
-router.delete('/courses/:id', auth, async (req, res) => {
+const deleteCourse = async (req, res) => {
     try {
         const course = await Course.findOneAndDelete({ _id: req.params.id, owner: req.user._id });
 
@@ -89,6 +91,12 @@ router.delete('/courses/:id', auth, async (req, res) => {
     } catch(e) {
         res.status(500).send(e);
     }
-});
+};
 
-module.exports = router;
+module.exports = {
+    getCourses,
+    addCourse,
+    getCourse,
+    updateCourse,
+    deleteCourse
+};

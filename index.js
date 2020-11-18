@@ -6,8 +6,8 @@ const cors = require('cors');
 //const bodyParser = require('body-parser');
 
 require('./src/db/mongoose');
-const courseRouter = require('./src/routers/course');
-const userRouter = require('./src/routers/user');
+const courseRouter = require('./src/routes/course');
+const userRouter = require('./src/routes/user');
 const notFound = require('./src/middleware/notFound');
 
 const app = express();
