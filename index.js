@@ -7,6 +7,7 @@ const cors = require('cors');
 
 require('./src/db/mongoose');
 const courseRouter = require('./src/routes/course');
+const commentRouter = require('./src/routes/comment');
 const userRouter = require('./src/routes/user');
 const notFound = require('./src/middleware/notFound');
 
@@ -21,8 +22,9 @@ app.use(cors({
     origin: 'http://localhost:3000'
 }));
 
-app.use(userRouter);
 app.use(courseRouter);
+app.use(commentRouter);
+app.use(userRouter);
 app.use(notFound);
 
 app.listen(port, () => {
