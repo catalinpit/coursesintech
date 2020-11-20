@@ -44,6 +44,7 @@ const getCourse = async (req, res) => {
 
     try {
         const course = await Course.findOne({ _id })
+            .populate({ path: 'courseComments', model: Comment });
 
         if (!course) {
             return res.send(404).send();
