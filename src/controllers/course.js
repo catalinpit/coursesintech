@@ -10,7 +10,7 @@ const getCourses = async (req, res) => {
 
     try {
         const courses = await Course.find()
-            .populate({ path: 'courseComments', model: 'Comment' })
+            .populate({ path: 'courseComments', model: Comment })
             .sort({
                 createdAt: order
             });
