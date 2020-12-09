@@ -10,7 +10,7 @@ const getCourses = async (req, res) => {
 
     try {
         const courses = await Course.find()
-            .populate({ path: 'courseComments', model: Comment })
+            .populate('owner courseComments')
             .sort({
                 createdAt: order
             });
@@ -97,10 +97,26 @@ const deleteCourse = async (req, res) => {
     }
 };
 
+const getCoursesByTag = async (req, res) => {
+    try {
+        const tagURL = req.params.tag;
+        const tagQuery = tagURL || { $exists: true };
+        const tagsPromise = Course.getTags();
+        const coursesPromise = Course.find({ tags: tagQuery });
+
+        const [tags, courses] = Promise.all([tagsPromise, coursesPromise]);
+
+        res.json(tagURL, tags, stores);
+    } catch(e) {
+        res.status(500).send(e);
+    }
+}
+
 module.exports = {
     getCourses,
     addCourse,
     getCourse,
     updateCourse,
-    deleteCourse
+    deleteCourse,
+    getCoursesByTag
 };

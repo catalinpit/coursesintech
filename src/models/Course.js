@@ -12,6 +12,10 @@ const CourseSchema = new mongoose.Schema({
         required: true,
         minglength: 20
     },
+    tags: {
+        type: [String],
+        required: true
+    },
     author: {
         type: String,
         required: true,
@@ -35,6 +39,18 @@ const CourseSchema = new mongoose.Schema({
     timestamps: true
 });
 
+// add methods to a schema by adding them on statics
+CourseSchema.statics.getTags = function() {
+    return this.aggregate([
+        { $unwind: '$tags' },
+        // group the tags and count them
+        { $group: { _id: '$tags', count: { $sum: 1 } } },
+        // sort in descending order
+        { $sort: { count: -1 } }
+    ]);
+};
+
+// relationship between courses and comments
 CourseSchema.virtual('courseComments', {
     ref: 'Comment',
     localField: '_id',
