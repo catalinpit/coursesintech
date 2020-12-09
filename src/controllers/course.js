@@ -44,7 +44,7 @@ const getCourse = async (req, res) => {
 
     try {
         const course = await Course.findOne({ _id })
-            .populate({ path: 'courseComments', model: Comment });
+            .populate('owner courseComments');
 
         if (!course) {
             return res.send(404).send();
@@ -106,7 +106,7 @@ const getCoursesByTag = async (req, res) => {
 
         const [tags, courses] = Promise.all([tagsPromise, coursesPromise]);
 
-        res.json(tagURL, tags, stores);
+        res.json(tagURL, tags, courses);
     } catch(e) {
         res.status(500).send(e);
     }
