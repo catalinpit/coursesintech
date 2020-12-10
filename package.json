@@ -4,7 +4,7 @@
   "description": "Uses TailwindCSS in Node.js with Express",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js -e js,css,pug",
+    "dev": "nodemon ./bin/www -e js,css,pug",
     "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css",
     "lint": "eslint ./"
   },

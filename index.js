@@ -12,7 +12,6 @@ const userRouter = require('./src/routes/user');
 const notFound = require('./src/middleware/notFound');
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json());
@@ -22,19 +21,17 @@ app.use(cors({
     origin: 'http://localhost:3000'
 }));
 
-
-// for CORS issues
-// app.use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
-//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-// });
-
 app.use(courseRouter);
 app.use(commentRouter);
 app.use(userRouter);
 app.use(notFound);
 
-app.listen(port, () => {
-    console.log(`The application started on port ${port}`);
+app.use((err, req, res) => {
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+    res.status(err.status || 500);
+    res.render('error');
 });
+
+module.exports = app;
