@@ -1,0 +1,16 @@
+extends layout
+
+include mixins/_courseCard
+include mixins/_header
+include mixins/_footer
+
+block content
+    +header()
+    .section.pb-20.bg-gray-100
+        .container.mx-auto.px-4
+            h1.text-5xl.font-semibold.leading-normal.py-16.text-center.text-gray-700
+                | Browse courses
+            for course in courses
+                = course
+                +courseCard(course)
+    +footer()

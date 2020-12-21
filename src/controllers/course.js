@@ -15,8 +15,10 @@ const getCourses = async (req, res) => {
                 createdAt: order
             });
 
-        res.json({
-            courses: courses
+        res.render('courses',
+        {
+            courses: courses,
+            title: 'Courses in tech'
         });
     } catch(e) {
         console.log(e)

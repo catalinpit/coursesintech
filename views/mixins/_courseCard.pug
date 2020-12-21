@@ -1,0 +1,25 @@
+mixin courseCard(course = {})
+    .flex.flex-wrap
+        .p-4(class='md:w-1/3')
+            .h-full.border-2.rounded-lg.shadow-lg.overflow-hidden
+                img.w-full.object-cover.object-center(class='lg:h-48 md:h-36' src='images/720x400.png' alt='blog')
+                .p-6.bg-white
+                    h2.tracking-widest.text-xs.title-font.font-medium.text-gray-500.mb-1 test
+                    h1.title-font.text-lg.font-medium.text-gray-900.mb-3 test
+                    p.leading-relaxed.mb-3
+                        | Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.
+                    .flex.items-center.flex-wrap
+                        a.text-indigo-500.inline-flex.items-center(class='md:mb-2 lg:mb-0')
+                            | Learn More
+                            svg.w-4.h-4.ml-2(viewbox='0 0 24 24' stroke='currentColor' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                                path(d='M5 12h14')
+                                path(d='M12 5l7 7-7 7')
+                        span.text-gray-600.mr-3.inline-flex.items-center.ml-auto.leading-none.text-sm.pr-3.py-1.border-r-2.border-gray-300(class='lg:ml-auto md:ml-0')
+                            svg.w-4.h-4.mr-1(stroke='currentColor' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round' viewbox='0 0 24 24')
+                                path(d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z')
+                                circle(cx='12' cy='12' r='3')
+                            | 1.2K
+                        span.text-gray-600.inline-flex.items-center.leading-none.text-sm
+                            svg.w-4.h-4.mr-1(stroke='currentColor' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round' viewbox='0 0 24 24')
+                                path(d='M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z')
+                            | 6
