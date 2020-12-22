@@ -1,2 +1,16 @@
 mixin footer
-    h1 lol
+    footer.bg-gray-900.pt-12.pb-12
+        .container.mx-auto.px-4
+            .flex.flex-wrap
+                .w-full.px-4(class='lg:w-6/12')
+                    h4.text-3xl.font-semibold.text-gray-50 Where you can find us
+                    h5.text-lg.mt-2.mb-2.text-gray-100 These are our social media channels
+                    .mt-6
+                        button.bg-white.text-blue-400.shadow-lg.font-normal.h-10.w-10.items-center.justify-center.align-center.rounded-full.outline-none.mr-2.p-3(class='focus:outline-none' type='button')
+                            i.flex.fab.fa-twitter
+                        button.bg-white.text-blue-600.shadow-lg.font-normal.h-10.w-10.items-center.justify-center.align-center.rounded-full.outline-none.mr-2.p-3(class='focus:outline-none' type='button')
+                            i.flex.fab.fa-facebook-square
+                        button.bg-white.text-pink-400.shadow-lg.font-normal.h-10.w-10.items-center.justify-center.align-center.rounded-full.outline-none.mr-2.p-3(class='focus:outline-none' type='button')
+                            i.flex.fab.fa-dribbble
+                        button.bg-white.text-gray-900.shadow-lg.font-normal.h-10.w-10.items-center.justify-center.align-center.rounded-full.outline-none.mr-2.p-3(class='focus:outline-none' type='button')
+                            i.flex.fab.fa-github

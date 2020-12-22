@@ -52,8 +52,10 @@ const getCourse = async (req, res) => {
             return res.send(404).send();
         }
 
-        res.json({ 
-            course
+        res.render('course',
+        {
+            course: course,
+            title: course.name
         });
     } catch(e) {
         res.status(500).send(e);
