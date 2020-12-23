@@ -6,8 +6,8 @@ include mixins/_footer
 block content
     +header()
     section.relative.py-16.bg-gray-100
-        .container.mx-auto.px-4
-            .relative.flex.flex-col.min-w-0.break-words.bg-white.w-full.mb-6.shadow-xl.rounded-lg.-mt-64
+        .container.mx-auto.px-4.pt-56
+            .relative.flex.flex-col.min-w-0.break-words.bg-white.w-full.mb-6.shadow-xl.rounded-lg
                 .px-6
                     .flex.flex-wrap.justify-center
                         .w-full.px-4.flex.justify-center(class='lg:w-3/12 lg:order-2')
@@ -37,18 +37,13 @@ block content
                             = course.tags
                         .mb-2.text-gray-700.mt-10
                             i.fas.fa-briefcase.mr-2.text-lg.text-gray-500
-                            | Solution Manager - Creative Tim Officer
+                            | Course created by #{course.author}
                         .mb-2.text-gray-700
                             i.fas.fa-university.mr-2.text-lg.text-gray-500
-                            | University of Computer Science
+                            | Course published on Udemy
                     .mt-10.py-10.border-t.border-gray-300.text-center
                         .flex.flex-wrap.justify-center
                             .w-full.px-4(class='lg:w-9/12')
                                 p.mb-4.text-lg.leading-relaxed.text-gray-800
-                                    | An artist of considerable range, Jenna the name taken by
-                                    | Melbourne-raised, Brooklyn-based Nick Murphy writes,
-                                    | performs and records all of his own music, giving it a
-                                    | warm, intimate feel with a solid groove structure. An
-                                    | artist of considerable range.
-                                a.font-normal.text-blue-500(href='#pablo') Show more
+                                    = course.description
     +footer()

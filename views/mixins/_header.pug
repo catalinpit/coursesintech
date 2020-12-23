@@ -1,16 +1,25 @@
-mixin header
-    .relative.pt-72.pb-32.content-center.items-center.justify-center(style='min-height: 75vh;')
-        .absolute.top-0.w-full.h-full.bg-center.bg-cover(style='background-image: url("https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80")')
-            span#blackOverlay.w-full.h-full.absolute.opacity-50.bg-black
-        .container.relative.mx-auto
-            .items-center.flex.flex-wrap
-                .w-full.px-4.ml-auto.mr-auto.text-center(class='lg:w-6/12')
-                    .pr-12
-                        h1.text-white.font-semibold.text-8xl
-                            | Courses in Tech
-                        p.mt-4.text-2xl.text-gray-300
-                            | We make it easier for you to find courses in tech
-        .top-auto.bottom-0.left-0.right-0.w-full.absolute.pointer-events-none.overflow-hidden(style='height: 70px; transform: translateZ(0px);')
-            svg.absolute.bottom-0.overflow-hidden(xmlns='http://www.w3.org/2000/svg' preserveaspectratio='none' version='1.1' viewbox='0 0 2560 100' x='0' y='0')
-                polygon.text-gray-100.fill-current(points='2560 0 2560 100 0 100')
+include _navigation
 
+mixin header
+    +navigation()
+    .bg-gray-800
+        .px-4.pt-16.mx-auto(class='sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20')
+            .max-w-xl(class='sm:mx-auto lg:max-w-2xl')
+                .flex.flex-col(class='sm:text-center sm:mb-0')
+                    a.flex.justify-center.mb-6(href='/' class='sm:mx-auto')
+                        .flex.items-center.justify-center.w-12.h-12.rounded-full.bg-indigo-50
+                            svg.w-10.h-10.text-deep-purple-accent-400(stroke='currentColor' viewbox='0 0 52 52')
+                                polygon(stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none' points='29 13 14 29 25 29 23 39 38 23 27 23')
+                    .max-w-xl.mb-10(class='md:mx-auto sm:text-center lg:max-w-2xl md:mb-12')
+                        h2.max-w-lg.mb-6.font-sans.text-3xl.font-bold.leading-none.tracking-tight.text-gray-100.text-center(class='sm:text-4xl md:mx-auto')
+                            span.relative.inline-block
+                                svg.absolute.w-32.-mt-10.-ml-28.text-blue-gray-100(viewbox='0 0 52 24' fill='currentColor' class='lg:w-32 lg:-ml-28 lg:-mt-10 sm:block')
+                                    defs
+                                        pattern#e77df901-b9d7-4b9b-822e-16b2d410795b(x='0' y='0' width='.135' height='.30')
+                                            circle(cx='1' cy='1' r='.7')
+                                    rect(fill='url(#e77df901-b9d7-4b9b-822e-16b2d410795b)' width='52' height='24')
+                                span.relative Courses in tech
+                        p.text-base.text-gray-100.text-center(class='md:text-lg')
+                            | You want to learn a new technology, but you do not know where to start
+                        p.text-base.font-semibold.text-gray-100.text-center(class='md:text-lg')
+                            | We aim to solve this problem by curating courses for you

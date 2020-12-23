@@ -7,7 +7,8 @@ mixin courseCard(course = {})
                     h2.tracking-widest.text-xs.title-font.font-medium.text-gray-500.mb-1 #{course.tags} 
                     h1.title-font.text-lg.font-medium.text-gray-900.mb-3 #{course.name}
                     p.leading-relaxed.mb-3
-                        = course.description
+                        = course.description.substring(0,100)
+                        | ...
                     .flex.items-center.flex-wrap
                         a(href=`courses/${course._id}`).text-indigo-500.inline-flex.items-center(class='md:mb-2 lg:mb-0')
                             | Learn More
